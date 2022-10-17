@@ -40,6 +40,8 @@ const Filter = ({
             <option value="delhi">Delhi</option>
             <option value="mumbai">Mumbai</option>
             <option value="pune">Pune</option>
+            <option value="jaipur">Jaipur</option>
+            <option value="kolkata">Kolkata</option>
           </select>
           {/* <h3>New York, USA</h3> */}
         </div>
