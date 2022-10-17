@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useState } from 'react';
 import './App.scss';
-import FavoritePage from './components/favoritePage';
+import FavoritePage from './components/FavoritePage';
 import Filter from './components/Filter';
 import Header from './components/Header';
 import PropertyListing from './components/PropertyListing';
