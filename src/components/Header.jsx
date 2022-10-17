@@ -8,7 +8,9 @@ const Header = () => {
   return (
     <div className="header">
       <div className="logo">
-        <h1>RealState</h1>
+        <Link to="/">
+          <h1>RealState</h1>
+        </Link>
         {/* <h3>Rent</h3>
         <h3>Buy</h3>
         <h3>Sell</h3> */}

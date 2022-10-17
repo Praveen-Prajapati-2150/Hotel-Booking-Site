@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 
 const data = [
   {
+    id: '1',
     img: './house.jpg',
     price: '2095',
     title: 'Palm Harbor',
@@ -21,6 +22,7 @@ const data = [
     },
   },
   {
+    id: '2',
     img: './palace.jpg',
     price: '9999',
     title: 'Peru Island',
@@ -33,6 +35,7 @@ const data = [
     },
   },
   {
+    id: '3',
     img: './palace.jpg',
     price: '9999',
     title: 'Peru Island',
@@ -45,6 +48,7 @@ const data = [
     },
   },
   {
+    id: '4',
     img: './house_2.jpg',
     price: '195',
     title: 'Faulkner Ave',
@@ -57,6 +61,7 @@ const data = [
     },
   },
   {
+    id: '5',
     img: './house_2.jpg',
     price: '101',
     title: 'Faulkner Ave',
@@ -69,6 +74,7 @@ const data = [
     },
   },
   {
+    id: '6',
     img: './house.jpg',
     price: '299',
     title: 'Faulkner Ave',
@@ -81,6 +87,7 @@ const data = [
     },
   },
   {
+    id: '7',
     img: './house.jpg',
     price: '795',
     title: 'Faulkner Ave',
@@ -93,6 +100,7 @@ const data = [
     },
   },
   {
+    id: '8',
     img: './house.jpg',
     price: '501',
     title: 'Faulkner Ave',
@@ -208,6 +216,7 @@ function App() {
                 />
                 <PropertyListing
                   properties={properties}
+                  setProperties={properties}
                   searchString={searchString}
                   favorite={favorite}
                   setFavorite={setFavorite}

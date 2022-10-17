@@ -12,6 +12,7 @@ import { BiHeartCircle } from 'react-icons/bi';
 const PropertyListing = ({
   searchString,
   properties,
+  setProperties,
   favorite,
   setFavorite,
 }) => {
@@ -24,17 +25,21 @@ const PropertyListing = ({
   }, [favorite]);
 
   const addToFavorite = (prop) => {
-    // if (favorite) {
-    //   favorite.map((item) => {
-    //     if (item.id !== prop.id) {
-    //       setFavorite([...favorite, { prop, id: Date.now() }]);
-    //     }
-    //   });
-    // } else {
-    //   setFavorite([...favorite, { prop, id: Date.now() }]);
-    // }
-    setFavorite([...favorite, { prop, id: Date.now() }]);
+    if (favorite.length === 0) {
+      setFavorite([...favorite, prop]);
+    } else {
+      favorite?.filter((favr) => {
+        console.log(favr);
+        if (favr.id !== prop.id) {
+          setFavorite([...favorite, prop]);
+        }
+      });
+      // }
+    }
   };
+
+  console.log(favorite);
+  // console.log('properties', properties);
 
   return (
     <div className="property_listing">
@@ -60,7 +65,10 @@ const PropertyListing = ({
                   style={{ cursor: 'pointer' }}
                   onClick={() => addToFavorite(prop)}
                 >
-                  <BiHeartCircle className="icon" />
+                  {/* {favorite?.map((item) => {
+                    if (prop.id === item.id) { */}
+                  <BiHeartCircle className="icon" />;{/* } */}
+                  {/* })} */}
                 </button>
               </div>
 
