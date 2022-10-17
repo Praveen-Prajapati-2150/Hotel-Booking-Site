@@ -129,9 +129,6 @@ function App() {
       ? []
       : JSON.parse(localStorage.getItem('favorite'))
   );
-  const [showFavoritePage, setShowFavoritePage] = useState(false);
-
-  console.log({ showFavoritePage });
 
   const filterCity = (array) => {
     return array.filter((prop) => {

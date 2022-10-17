@@ -9,13 +9,28 @@ import { BiHeartCircle } from 'react-icons/bi';
 
 const FavoritePage = ({ searchString, properties, favorite, setFavorite }) => {
   const removeToFavorite = (prop) => {
+    console.log('called');
     setFavorite(favorite.filter((item) => item.id !== prop.id));
   };
 
+  const key = 'id';
+
+  const arrayUniqueByKey = [
+    ...new Map(favorite.map((item) => [item[key], item])).values(),
+  ];
+
+  useEffect(() => {
+    window.localStorage.setItem('favorite', JSON.stringify(favorite));
+  }, [favorite]);
+
+  console.log('arrayUniqueByKey', arrayUniqueByKey);
+
   return (
     <div className="property_listing">
-      {/* {[...Array(10)].map((prop) => { */}
-      {properties?.map((prop, index) => {
+      {favorite.length === 0 && (
+        <h3 className="error">No Property Added To Favorites</h3>
+      )}
+      {favorite?.map((prop, index) => {
         if (
           prop.address.toLowerCase().includes(searchString.toLowerCase()) ||
           prop.title.toLowerCase().includes(searchString.toLowerCase())
