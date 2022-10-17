@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useEffect } from 'react';
 import './styles/propertyListing.scss';
 import { BiBed } from 'react-icons/bi';
@@ -8,29 +8,37 @@ import { BiHeartCircle } from 'react-icons/bi';
 // import { IoIosHeartDislike } from 'react-icons/ioios';
 
 const FavoritePage = ({ searchString, properties, favorite, setFavorite }) => {
+  const [arrayUniqueByKey, setArrayUniqueByKey] = useState([
+    ...new Map(favorite.map((item) => [item['id'], item])).values(),
+  ]);
+
   const removeToFavorite = (prop) => {
     console.log('called');
-    setFavorite(favorite.filter((item) => item.id !== prop.id));
+    setArrayUniqueByKey(arrayUniqueByKey.filter((item) => item.id !== prop.id));
   };
 
-  const key = 'id';
+  // const key = 'id';
 
-  const arrayUniqueByKey = [
-    ...new Map(favorite.map((item) => [item[key], item])).values(),
-  ];
+  // arrayUniqueByKey = [
+  //   ...new Map(favorite.map((item) => [item[key], item])).values(),
+  // ];
 
   useEffect(() => {
     window.localStorage.setItem('favorite', JSON.stringify(favorite));
   }, [favorite]);
 
+  useEffect(() => {
+    setFavorite(arrayUniqueByKey);
+  }, [arrayUniqueByKey]);
+
   console.log('arrayUniqueByKey', arrayUniqueByKey);
 
   return (
     <div className="property_listing">
-      {favorite.length === 0 && (
+      {arrayUniqueByKey.length === 0 && (
         <h3 className="error">No Property Added To Favorites</h3>
       )}
-      {favorite?.map((prop, index) => {
+      {arrayUniqueByKey?.map((prop, index) => {
         if (
           prop.address.toLowerCase().includes(searchString.toLowerCase()) ||
           prop.title.toLowerCase().includes(searchString.toLowerCase())
